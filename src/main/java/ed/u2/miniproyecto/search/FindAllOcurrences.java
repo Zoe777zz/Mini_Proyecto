@@ -7,33 +7,17 @@ import java.util.Comparator;
 import java.util.List;
 
 public class FindAllOcurrences {
-    public static <T extends Comparable<T>> List<Integer> findAll(T[] datos, T objetivo) {
-        List<Integer> indices = new ArrayList<>();
-        for (int i = 0; i < datos.length; i++) {
-            if (datos[i].compareTo(objetivo) == 0) {
-                indices.add(i);
-            }
-        }
-        return indices;
-    }
 
-    public static <T extends Comparable<T>> List<Nodo<T>> findAll(Nodo<T> cabeza, T objetivo) {
-        List<Nodo<T>> resultados = new ArrayList<>();
-        Nodo<T> actual = cabeza;
-
-        while (actual != null) {
-            if (actual.dato.compareTo(objetivo) == 0) {
-                resultados.add(actual); // Agregar coincidencia
-            }
-            actual = actual.siguiente;
-        }
-
-        return resultados; // Puede estar vacía si no encuentra nada
-    }
-
-    // --- AGREGA ESTOS MÉTODOS NUEVOS ---
-
-    // 1. findAll para Arrays usando un Comparator
+    /**
+     * Busca todas las apariciones de un valor en un arreglo y devuelve sus índices.
+     * Utiliza un comparador externo para determinar la igualdad.
+     *
+     * @param datos Arreglo de elementos donde se realizará la búsqueda.
+     * @param objetivo Valor de referencia que se desea encontrar.
+     * @param c Comparador que define el criterio de igualdad.
+     * @return Una lista de enteros que contiene los índices de todas las coincidencias.
+     * @param <T> Tipo de dato de los elementos.
+     */
     public static <T> List<Integer> findAll(T[] datos, T objetivo, Comparator<T> c) {
         List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < datos.length; i++) {
@@ -45,8 +29,15 @@ public class FindAllOcurrences {
         return indices;
     }
 
-    // 2. findAll para Lista Enlazada (SLL) usando un Comparator
-    // Esto resuelve el requisito: findAll(prioridad == 1)
+    /**
+     * Busca todos los nodos que coinciden con un valor en una lista enlazada simple (SLL).
+     *
+     * @param cabeza El nodo inicial (head) de la lista enlazada.
+     * @param objetivo Valor de referencia que se desea encontrar.
+     * @param c Comparador que define el criterio de igualdad.
+     * @return Una lista que contiene todos los nodos encontrados que coinciden con el objetivo.
+     * @param <T> Tipo de dato almacenado en los nodos.
+     */
     public static <T> List<Nodo<T>> findAll(Nodo<T> cabeza, T objetivo, Comparator<T> c) {
         List<Nodo<T>> resultados = new ArrayList<>();
         Nodo<T> actual = cabeza;

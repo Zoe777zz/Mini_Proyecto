@@ -5,6 +5,13 @@ public class SortResult {
     public int comparisons;
     public int swaps;
 
+    /**
+     * Constructor para inicializar los resultados del ordenamiento.
+     *
+     * @param timeNs Tiempo de ejecución en nanosegundos.
+     * @param comparisons Número total de comparaciones realizadas entre elementos.
+     * @param swaps Número total de intercambios o desplazamientos realizados.
+     */
     public SortResult(long timeNs, int comparisons, int swaps) {
         this.timeNs = timeNs;
         this.comparisons = comparisons;
